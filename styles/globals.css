@@ -8,7 +8,23 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
+html {
+  font-family: 'Be Vietnam Pro';
+  font-size: 16px;
+}
+
+
+:root {
+  --primary-color: #8F47FF;
+  --primary-disabled-color: #D4BBF7;
+  --gray-scale-100-color: #1D1D1D;
+  --gray-scale-80-color: #434343;
+  --gray-scale-60-color: #737373;
+  --gray-scale-40-color: #A1A1A1;
+  --gray-scale-20-color: #F4F4F4;
+  --gray-scale-15-color: #F9FAFC;
+}
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
@@ -30,4 +46,4 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-}
+} */
