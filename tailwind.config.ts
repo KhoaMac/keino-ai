@@ -19,6 +19,7 @@ const config: Config = {
         'title-small-regular': ['1.125rem', { lineHeight: '1.5', fontWeight: '400' }], // font-size: 18, line-height: 27
         'heading-medium-semibold': ['1.75rem', { lineHeight: '1.5', fontWeight: '600', letterSpacing: '0.25em'}], // font-size: 18, line-height: 27
         'body-medium-semibold': ['0.875rem', { lineHeight: '1.5', fontWeight: '400' }], // font-size: 14, line-height: 21
+        'caption-semibold': ['0.625rem', { lineHeight: '1.5', fontWeight: '600' }], // font-size: 14, line-height: 21
       },
       colors: {
         primary: 'var(--primary-color)',
@@ -29,6 +30,14 @@ const config: Config = {
         'gray-scale-40': 'var(--gray-scale-40-color)',
         'gray-scale-20': 'var(--gray-scale-20-color)',
         'gray-scale-15': 'var(--gray-scale-15-color)',
+      },
+      screens: {
+        'md': '768px',
+        'xl': '1024px',
+        '2xl': '1440px'
+      },
+      borderWidth: {
+        '1': '1px',
       },
       extend: {
         ':root': {

@@ -14,6 +14,7 @@ html {
 }
 
 
+
 :root {
   --primary-color: #8F47FF;
   --primary-disabled-color: #D4BBF7;
@@ -24,6 +25,13 @@ html {
   --gray-scale-20-color: #F4F4F4;
   --gray-scale-15-color: #F9FAFC;
 }
+
+@layer base {
+  p {
+    @apply text-body-medium-semibold;
+  }
+}
+
 /* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
