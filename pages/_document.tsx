@@ -5,6 +5,16 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <title>Setup Brand Voice - Let Keoni Generate</title>
+        <meta
+          name="description"
+          content="Generate your brand voice with Keoni. Keoni is an AI company that uses natural language processing to create a brand voice from your existing brand guidelines."
+        />
+        <meta property="og:image" content="https://keoni-ai-interview.vercel.app/assets/icons/default-avatar/avatar-7.svg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:image" content="https://keoni-ai-interview.vercel.app/assets/icons/default-avatar/avatar-7.svg" />
+        <meta name="twitter:image:alt" content="Keoni" />
+        <meta name="twitter:card" content="summary_large_image" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -20,3 +30,4 @@ export default function Document() {
     </Html>
   );
 }
+
