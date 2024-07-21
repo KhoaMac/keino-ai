@@ -21,6 +21,20 @@ const checkboxes: ICheckBox[] = [
   },
 ];
 
+
+const listDescriptions = [
+  "dummy 1 - id placerat in quis Nunc malesuada eget ex id enim. id eu commodo at Sed non In eget eu elit hendrerit gravida tincidunt commodo faucibus felis, turpis quam nibh ullamcorper elit efficitur. convallis. tortor. ullamcorper Ut dolor non quam",
+  "dummy 2 - id placerat in quis Nunc malesuada eget ex id enim. id eu commodo at Sed non In eget eu elit hendrerit gravida tincidunt commodo faucibus felis, turpis quam nibh ullamcorper elit efficitur. convallis. tortor. ullamcorper Ut dolor non quam",
+  "dummy 3 - id placerat in quis Nunc malesuada eget ex id enim. id eu commodo at Sed non In eget eu elit hendrerit gravida tincidunt commodo faucibus felis, turpis quam nibh ullamcorper elit efficitur. convallis. tortor. ullamcorper Ut dolor non quam",
+  "dummy 4 - id placerat in quis Nunc malesuada eget ex id enim. id eu commodo at Sed non In eget eu elit hendrerit gravida tincidunt commodo faucibus felis, turpis quam nibh ullamcorper elit efficitur. convallis. tortor. ullamcorper Ut dolor non quam",
+  "dummy 5 - id placerat in quis Nunc malesuada eget ex id enim. id eu commodo at Sed non In eget eu elit hendrerit gravida tincidunt commodo faucibus felis, turpis quam nibh ullamcorper elit efficitur. convallis. tortor. ullamcorper Ut dolor non quam",
+  "dummy 6 - id placerat in quis Nunc malesuada eget ex id enim. id eu commodo at Sed non In eget eu elit hendrerit gravida tincidunt commodo faucibus felis, turpis quam nibh ullamcorper elit efficitur. convallis. tortor. ullamcorper Ut dolor non quam",
+  "dummy 7 - id placerat in quis Nunc malesuada eget ex id enim. id eu commodo at Sed non In eget eu elit hendrerit gravida tincidunt commodo faucibus felis, turpis quam nibh ullamcorper elit efficitur. convallis. tortor. ullamcorper Ut dolor non quam",
+  "dummy 8 - id placerat in quis Nunc malesuada eget ex id enim. id eu commodo at Sed non In eget eu elit hendrerit gravida tincidunt commodo faucibus felis, turpis quam nibh ullamcorper elit efficitur. convallis. tortor. ullamcorper Ut dolor non quam",
+  "dummy 9 - id placerat in quis Nunc malesuada eget ex id enim. id eu commodo at Sed non In eget eu elit hendrerit gravida tincidunt commodo faucibus felis, turpis quam nibh ullamcorper elit efficitur. convallis. tortor. ullamcorper Ut dolor non quam",
+  "dummy 10 - id placerat in quis Nunc malesuada eget ex id enim. id eu commodo at Sed non In eget eu elit hendrerit gravida tincidunt commodo faucibus felis, turpis quam nibh ullamcorper elit efficitur. convallis. tortor. ullamcorper Ut dolor non quam",
+];
+
 const BUTTON_TYPES = {
   DEFAULT: 'default',
   DISABLED: 'disabled',
@@ -31,5 +45,6 @@ const BUTTON_TYPES = {
 export {
   tips,
   checkboxes,
-  BUTTON_TYPES
+  BUTTON_TYPES,
+  listDescriptions
 }

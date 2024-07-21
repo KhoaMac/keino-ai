@@ -17,7 +17,7 @@ const GroupCheckbox = ({name, checkboxes, currentSelection }: IGroupCheckbox) =>
    */
   const handleChange = (index: number) => {
     setSelectedIndex(index);
-    currentSelection(selectedIndex)
+    currentSelection(index)
   };
 
   return (

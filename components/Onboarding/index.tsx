@@ -5,21 +5,20 @@ import GroupCheckbox from "./GroupCheckbox";
 import IconPlusActive from "@/public/assets/icons/plus-active.svg";
 import Button from "../Button";
 import { BUTTON_TYPES, checkboxes, tips } from "@/utils/CONSTANTS";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import IconDelete from "@/public/assets/icons/delete.svg";
-import IconPlusCircle from "@/public/assets/icons/plus-circle.svg";
 import useOnboardingHooks from "./useOnboardingHooks";
-import IconGenerate from "@/public/assets/icons/generate.svg";
+import ChooseAvatar from "./ChooseAvatar";
+import BrandVoiceName from "./BrandVoiceName";
+import SuggestionGenerator from "./SuggestionGenerator";
+import UploadBusinessReference from "./UploadBusinessReference";
 
 const Onboarding = () => {
   const {
     isDisabledButton,
-    selectedAvatar,
     handleOnSave,
-    handleOnSelectAvatar,
-    handleUploadImageFromLocal,
-    listDefaultAvatar,
-    selectedAvatarFileName,
+    currentCheckedBox,
+    handleSelectTab,
   } = useOnboardingHooks();
   return (
     <div className="flex flex-col px-5 md:pl-[3.125rem] md:pr-[3.75rem] py-10 bg-white rounded-0.93">
@@ -36,141 +35,46 @@ const Onboarding = () => {
       <div className="mt-[2.1875rem]">
         <Tips {...tips} />
       </div>
-      <OnboardingSection title="Which describe you?">
+      <OnboardingSection title="Which describe you?" infoToolTip>
         <div className="mt-0.93">
           {checkboxes && (
             <GroupCheckbox
               checkboxes={checkboxes}
               name="checkbox"
-              currentSelection={(n) => console.log("nnn", n)}
+              currentSelection={handleSelectTab}
             />
           )}
         </div>
       </OnboardingSection>
 
-      <OnboardingSection title="Company website URLs:" infoToolTip>
-        <CompanyInputWebsites />
-      </OnboardingSection>
+      {currentCheckedBox === 0 && (
+        <>
+          <OnboardingSection title="Company website URLs:" infoToolTip>
+            <CompanyInputWebsites />
+          </OnboardingSection>
 
-      <OnboardingSection title="Preview Keoni’s Brand Voice Suggestion">
-        <div className="custom-divder" />
-      </OnboardingSection>
+          <OnboardingSection title="Business references">
+            <UploadBusinessReference />
+          </OnboardingSection>
 
-      <OnboardingSection>
-        <div className="custom-divider" />
-      </OnboardingSection>
+          {/* Preview Keoni’s Brand Voice Suggestion */}
+          <OnboardingSection title="Preview Keoni’s Brand Voice Suggestion">
+            <SuggestionGenerator />
+          </OnboardingSection>
 
-      <OnboardingSection title="Brand voice name">
-        <div className="mt-1">
-          <div className="border-y-1 border-1 w-full rounded-lg">
-            <input
-              type="text"
-              placeholder="Enter your brand voice name"
-              className="bg-gray-scale-15 py-3 text-body-medium-regular w-full rounded-lg px-2 text-gray-scale-80"
-            />
-          </div>
-        </div>
-      </OnboardingSection>
+          <OnboardingSection>
+            <div className="custom-divider" />
+          </OnboardingSection>
 
-      <OnboardingSection title="Choose avatar">
-        <div className="mt-1 flex w-full gap-5">
-          <div className="flex max-w-60 w-full flex-wrap gap-0.93">
-            {listDefaultAvatar.map((avatar: string, index: number) => (
-              <label
-                key={index}
-                className={`cursor-pointer w-[4.375rem] h-[4.375rem] rounded-lg relative ${
-                  selectedAvatar === avatar ? "border-2 border-primary" : ""
-                }`}
-              >
-                <input
-                  type="radio"
-                  name="avatar"
-                  value={avatar}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    handleOnSelectAvatar(event)
-                  }
-                  className="hidden"
-                />
-                <Image
-                  src={avatar}
-                  alt={`default-avatar-${index}`}
-                  layout="fill"
-                  className="rounded-lg"
-                />
-              </label>
-            ))}
-          </div>
-          <div className="bg-primary-disabled-50 w-full justify-center items-center flex flex-col border-1 rounded-lg border-dashed border-primary">
-            <div className={`${selectedAvatar ? 'flex p-5 w-full gap-5' : 'flex flex-col gap-1.5'}`}>
-              {selectedAvatar ? (
-                <>
-                  <div className="w-[7.125rem] h-[7.125rem] relative">
-                    <Image
-                      className="w-full h-auto max-w-[17.1875rem] max-h-[17.1875rem] rounded-lg"
-                      src={
-                        typeof selectedAvatar === "string" ? selectedAvatar : ""
-                      }
-                      layout="fill"
-                      alt="uploaded-avatar"
-                    />
-                  </div>
+          {/* Brand Voice name */}
+          <BrandVoiceName />
+          
+          {/* Choose Avatar */}
+          <ChooseAvatar />
+        </>
+      )}
 
-                  <div className="flex flex-col">
-                    <p>{selectedAvatarFileName}</p>
-                    <label
-                      htmlFor="file-upload"
-                      className="cursor-pointer text-center border-1 border-primary flex items-center rounded-lg px-4 py-2 mt-0.93 w-32"
-                    >
-                      <Image
-                        src={IconGenerate}
-                        alt="plus-circle"
-                        className="mx-auto"
-                      />
-                      <p className="text-primary text-body-small-semibold">Change File</p>
-                      <input
-                        id="file-upload"
-                        type="file"
-                        accept="image/*"
-                        className="hidden"
-                        onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                          handleUploadImageFromLocal(event)
-                        }
-                      />
-                    </label>
-                  </div>
-                </>
-              ) : (
-                <div className="w-44">
-                  <label
-                    htmlFor="file-upload"
-                    className="cursor-pointer text-center"
-                  >
-                    <Image
-                      src={IconPlusCircle}
-                      alt="plus-circle"
-                      className="mx-auto"
-                    />
-                    <p className="text-primary">Upload custom avatar</p>
-                    <p className="text-gray-scale-40 text-caption-regular">
-                      Minimum image size: 200 x 200 px. Maximum file size: 1 MB
-                    </p>
-                  </label>
-                  <input
-                    id="file-upload"
-                    type="file"
-                    accept="image/*"
-                    className="hidden"
-                    onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                      handleUploadImageFromLocal(event)
-                    }
-                  />
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </OnboardingSection>
-
+      {/* Save form */}
       <div className="flex flex-col gap-3.5 mt-[2.1875rem]">
         <Button
           text="Save & Next"
@@ -268,3 +172,6 @@ const OnboardingSection = ({
 };
 
 export default Onboarding;
+export {
+  OnboardingSection
+}

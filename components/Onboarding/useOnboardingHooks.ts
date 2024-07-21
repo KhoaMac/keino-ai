@@ -4,12 +4,16 @@ import Avatar05 from "@/public/assets/icons/default-avatar/avatar-5.svg";
 import Avatar06 from "@/public/assets/icons/default-avatar/avatar-6.svg";
 import Avatar07 from "@/public/assets/icons/default-avatar/avatar-7.svg";
 import Avatar08 from "@/public/assets/icons/default-avatar/avatar-8.svg";
-import { ChangeEvent, useState } from "react";
+import { listDescriptions } from "@/utils/CONSTANTS";
+import { ChangeEvent, useCallback, useState } from "react";
 
 const useOnboardingHooks = () => {
   const [isDisabledButton, setIsDisabledButton] = useState(false);
   const [selectedAvatar, setSelectedAvatar] = useState<string | ChangeEvent<HTMLInputElement>>();
   const [selectedAvatarFileName, setSelectedAvatarFileName] = useState<string>('')
+  const [currentCheckedBox, setCurrentCheckedBox] = useState<number>(0);
+  const [suggestionText, setSuggestionText] = useState<string>("");
+
   const handleOnSave = () => {
     console.log("save");
   };
@@ -38,6 +42,24 @@ const useOnboardingHooks = () => {
     Avatar03,
     Avatar01,
   ];
+
+  const handleSelectTab = useCallback((n: number) => {
+    setCurrentCheckedBox(n);
+  }, []);
+
+  /**
+   * Generate a random suggestion text from listDescriptions
+   */
+  const handleGenerateBrandVoiceSuggestions = () => {
+    const randomIndex = Math.floor(Math.random() * listDescriptions.length);
+    setSuggestionText(listDescriptions[randomIndex]);
+  };
+
+  const [files, setFiles] = useState<File[]>([]);
+
+  const handleDrop = (acceptedFiles: File[]) => {
+    setFiles(acceptedFiles);
+  };
   
   return {
     isDisabledButton,
@@ -46,7 +68,14 @@ const useOnboardingHooks = () => {
     handleOnSelectAvatar,
     handleUploadImageFromLocal,
     listDefaultAvatar,
-    selectedAvatarFileName
+    selectedAvatarFileName,
+    currentCheckedBox,
+    setCurrentCheckedBox,
+    handleSelectTab,
+    handleGenerateBrandVoiceSuggestions,
+    suggestionText,
+    files,
+    handleDrop
   }
 }
 
