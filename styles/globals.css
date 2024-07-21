@@ -9,49 +9,84 @@
 }
 
 html {
-  font-family: 'Be Vietnam Pro';
+  font-family: "Be Vietnam Pro";
   font-size: 16px;
+  background-color: var(--gray-scale-15-color);
 }
 
-
-
 :root {
-  --primary-color: #8F47FF;
-  --primary-disabled-color: #D4BBF7;
-  --gray-scale-100-color: #1D1D1D;
+  --primary-color: #8f47ff;
+  --secondary-color: #f1ecfe;
+  --primary-disabled-color: #d4bbf7;
+  --primary-disabled-50-color: rgba(143, 71, 255, 0.05);
+  --gray-scale-100-color: #1d1d1d;
   --gray-scale-80-color: #434343;
   --gray-scale-60-color: #737373;
-  --gray-scale-40-color: #A1A1A1;
-  --gray-scale-20-color: #F4F4F4;
-  --gray-scale-15-color: #F9FAFC;
+  --gray-scale-40-color: #a1a1a1;
+  --gray-scale-20-color: #f4f4f4;
+  --gray-scale-15-color: #f9fafc;
 }
 
 @layer base {
   p {
-    @apply text-body-medium-semibold;
+    @apply text-body-medium-regular;
+  }
+
+  input:focus {
+    @apply outline-none;
   }
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer components {
+  .custom-divider {
+    height: 5px;
+    background-color: var(--gray-scale-20-color);
+    width: 100%;
+  }
+  /**
+   * Styles for custom radio checked element.
+   */
+  .custom-radio-checked {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    transform: translateY(-50%);
+    background-color: white;
+    border-radius: 50%;
+    border: 1px solid var(--gray-scale-60-color);
+  }
+
+  /**
+   * Styles for custom radio checked element when input is checked.
+   */
+  .group-check-boxes-container input:checked ~ .custom-radio-checked {
+    @apply border-primary border-1;
+  }
+
+  /**
+   * Styles for custom radio checked element after.
+   */
+  .custom-radio-checked:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  /**
+   * Styles for custom radio checked element after when input is checked.
+   */
+  .group-check-boxes-container input:checked ~ .custom-radio-checked:after {
+    display: block;
+  }
+
+  /**
+   * Styles for custom radio checked element after after.
+   */
+  .group-check-boxes-container .custom-radio-checked:after {
+    @apply bg-primary rounded-full;
+    height: 12px;
+    width: 12px;
+    top: 3px;
+    left: 3px;
   }
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-} */

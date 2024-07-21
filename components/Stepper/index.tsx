@@ -1,13 +1,12 @@
 import { IStepper } from "@/interface";
 import CheckedCircle from "@/public/assets/icons/checklist.svg";
 import Image from "next/image";
-import { useMemo, useState } from "react";
 
 const Stepper = (item: IStepper) => {
   console.log("===item", item.index);
   const currentStep = 2;
   return (
-    <div className="flex items-center gap-[0.9375rem]">
+    <div className="flex md:items-center gap-0.93 z-20">
       {item.status ? (
         <Image src={CheckedCircle} alt="Checked Circle" />
       ) : (
@@ -20,7 +19,7 @@ const Stepper = (item: IStepper) => {
         >
           <span
             className={`mx-auto ${
-              currentStep === item.index ? "text-white" : "text-gray-scale-40"
+              currentStep === item.index ? "text-white" : "text-gray-scale-40 bg-white"
             }  text-caption-semibold text-center`}
           >
             {item.index + 1}
@@ -28,8 +27,10 @@ const Stepper = (item: IStepper) => {
         </div>
       )}
       <p
-        className={`text-body-medium-semibold ${
-          !item.status && currentStep === item.index
+        className={`text-body-medium-regular ${
+          item.status
+            ? "text-primary"
+            : currentStep === item.index
             ? "text-primary"
             : "text-gray-scale-40"
         }`}

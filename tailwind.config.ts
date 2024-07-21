@@ -17,13 +17,19 @@ const config: Config = {
       fontSize: {
         'title-small-semibold': ['2.25rem', { lineHeight: '1.5', fontWeight: '600' }], // font-size: 36, line-height: 54
         'title-small-regular': ['1.125rem', { lineHeight: '1.5', fontWeight: '400' }], // font-size: 18, line-height: 27
-        'heading-medium-semibold': ['1.75rem', { lineHeight: '1.5', fontWeight: '600', letterSpacing: '0.25em'}], // font-size: 18, line-height: 27
-        'body-medium-semibold': ['0.875rem', { lineHeight: '1.5', fontWeight: '400' }], // font-size: 14, line-height: 21
-        'caption-semibold': ['0.625rem', { lineHeight: '1.5', fontWeight: '600' }], // font-size: 14, line-height: 21
+        'heading-medium-semibold': ['1.75rem', { lineHeight: '1.5', fontWeight: '600'}], // font-size: 18, line-height: 27
+        'body-large-semibold': ['1rem', { lineHeight: '1.5', fontWeight: '600' }], // font-size: 14, line-height: 21
+        'body-medium-semibold': ['0.875rem', { lineHeight: '1.5', fontWeight: '600' }], // font-size: 14, line-height: 21
+        'body-medium-regular': ['0.875rem', { lineHeight: '1.5', fontWeight: '400' }], // font-size: 14, line-height: 21
+        'body-small-semibold': ['0.75rem', { lineHeight: '1.5', fontWeight: '600' }], // font-size: 14, line-height: 21
+        'caption-semibold': ['0.625rem', { lineHeight: '1.5', fontWeight: '600' }], // font-size: 10, line-height: 21
+        'caption-regular': ['0.625rem', { lineHeight: '1.5', fontWeight: '400' }], // font-size: 10, line-height: 21
       },
       colors: {
         primary: 'var(--primary-color)',
+        secondary: 'var(--secondary-color)',
         'primary-disabled': 'var(--primary-disabled-color)',
+        'primary-disabled-50': 'var(--primary-disabled-50-color)',
         'gray-scale-100': 'var(--gray-scale-100-color)',
         'gray-scale-80': 'var(--gray-scale-80-color)',
         'gray-scale-60': 'var(--gray-scale-60-color)',
@@ -37,7 +43,17 @@ const config: Config = {
         '2xl': '1440px'
       },
       borderWidth: {
+        '0.5': '0.5px',
         '1': '1px',
+      },
+      margin: {
+        '0.93': '0.9375rem'
+      },
+      gap: {
+        '0.93': '0.9375rem'
+      },
+      borderRadius: {
+        '0.93': '0.9375rem'
       },
       extend: {
         ':root': {
