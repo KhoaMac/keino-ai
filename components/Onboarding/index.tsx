@@ -107,12 +107,25 @@ const Onboarding = () => {
           onClick={handleOnSave}
           className="justify-center py-3 text-body-large-semibold text-white"
         />
-        <Button
-          text="Skip for now"
-          type={BUTTON_TYPES.NONE}
-          onClick={handleOnSave}
-          className="justify-center text-gray-scale-60"
-        />
+        <div className="relative mx-auto w-full">
+          <Button
+            text="Skip for now"
+            type={BUTTON_TYPES.NONE}
+            onClick={handleOnSave}
+            className="justify-center text-gray-scale-60 [&~span]:hover:block w-full"
+          />
+          <span className="hidden bg-gray-scale-60 text-gray-scale-15 absolute w-[13.875rem] text-label-medium-medium px-2.5 py-2 rounded-lg -translate-x-1/2 left-1/2">
+            <span
+              className="absolute -top-0.5 left-1/2 transform -translate-x-1/2 w-0 h-0 rotate-180"
+              style={{
+                borderLeft: "5px solid transparent",
+                borderRight: "5px solid transparent",
+                borderTop: "5px solid var(--gray-scale-60-color)",
+              }}
+            ></span>
+            You can always adjust this later in the configure screen
+          </span>
+        </div>
       </div>
     </div>
   );

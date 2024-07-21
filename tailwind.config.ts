@@ -21,7 +21,8 @@ const config: Config = {
         'body-large-semibold': ['1rem', { lineHeight: '1.5', fontWeight: '600' }], // font-size: 14, line-height: 21
         'body-medium-semibold': ['0.875rem', { lineHeight: '1.5', fontWeight: '600' }], // font-size: 14, line-height: 21
         'body-medium-regular': ['0.875rem', { lineHeight: '1.5', fontWeight: '400' }], // font-size: 14, line-height: 21
-        'body-small-semibold': ['0.75rem', { lineHeight: '1.5', fontWeight: '600' }], // font-size: 14, line-height: 21
+        'body-small-semibold': ['0.75rem', { lineHeight: '1.5', fontWeight: '600' }], // font-size: 12, line-height: 18
+        'label-medium-medium': ['0.75rem', { lineHeight: '1.5', fontWeight: '500' }], // font-size: 12, line-height: 18
         'caption-semibold': ['0.625rem', { lineHeight: '1.5', fontWeight: '600' }], // font-size: 10, line-height: 21
         'caption-regular': ['0.625rem', { lineHeight: '1.5', fontWeight: '400' }], // font-size: 10, line-height: 21
       },
