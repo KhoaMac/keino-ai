@@ -1,6 +1,6 @@
-import Avatar01 from "@/public/assets/icons/default-avatar/avatar-1.svg";
-import Avatar03 from "@/public/assets/icons/default-avatar/avatar-3.svg";
-import Avatar05 from "@/public/assets/icons/default-avatar/avatar-5.svg";
+import Avatar09 from "@/public/assets/icons/default-avatar/avatar-9.svg";
+import Avatar04 from "@/public/assets/icons/default-avatar/avatar-4.svg";
+import Avatar02 from "@/public/assets/icons/default-avatar/avatar-2.svg";
 import Avatar06 from "@/public/assets/icons/default-avatar/avatar-6.svg";
 import Avatar07 from "@/public/assets/icons/default-avatar/avatar-7.svg";
 import Avatar08 from "@/public/assets/icons/default-avatar/avatar-8.svg";
@@ -15,12 +15,15 @@ const useOnboardingHooks = () => {
   const [suggestionText, setSuggestionText] = useState<string>("");
   const [files, setFiles] = useState<File[]>([]);
   const [numberOfInputFields, setNumberOfInputFields] = useState<number>(1);
-
+  const [selectedBrandVoiceIndex, setSelectedBrandVoiceIndex] = useState<number>(0);
+  const [selectViewMoreIndex, setSelectViewMoreIndex] = useState<number>(0);
+  const [selectDefaultAvatarIndex, setSelectDefaultAvatarIndex] = useState<number>(0)
   const handleOnSave = () => {
-    console.log("save");
+    // console.log("save");
   };
-  const handleOnSelectAvatar = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleOnSelectAvatar = (e: ChangeEvent<HTMLInputElement>, index: number) => {
     console.log("==e.target", e.target.value);
+    setSelectDefaultAvatarIndex(index)
   };
 
   const handleUploadImageFromLocal = (event: ChangeEvent<HTMLInputElement>) => {
@@ -37,12 +40,12 @@ const useOnboardingHooks = () => {
   };
 
   const listDefaultAvatar = [
-    Avatar05,
     Avatar06,
-    Avatar08,
     Avatar07,
-    Avatar03,
-    Avatar01,
+    Avatar09,
+    Avatar08,
+    Avatar04,
+    Avatar02,
   ];
 
   const handleSelectTab = useCallback((n: number) => {
@@ -68,6 +71,17 @@ const useOnboardingHooks = () => {
   const handleOnDeleteUrl = () => {
     setNumberOfInputFields(numberOfInputFields - 1);
   };
+
+  const handleChange = (index: number) => {
+    setSelectedBrandVoiceIndex(index);
+  };
+
+  const [isBrandVoiceDrawerOpen, setBrandVoiceDrawerOpen] = useState(false);
+
+  const toggleDrawerViewMore = (index?: number) => {
+    setBrandVoiceDrawerOpen(!isBrandVoiceDrawerOpen);
+    if (index) setSelectViewMoreIndex(index)
+  };
   
   return {
     isDisabledButton,
@@ -87,6 +101,12 @@ const useOnboardingHooks = () => {
     numberOfInputFields,
     handleAddUrl,
     handleOnDeleteUrl,
+    selectedBrandVoiceIndex,
+    handleChange,
+    toggleDrawerViewMore,
+    isBrandVoiceDrawerOpen,
+    selectViewMoreIndex,
+    selectDefaultAvatarIndex
   }
 }
 

@@ -3,7 +3,7 @@ import CheckedCircle from "@/public/assets/icons/checklist.svg";
 import Image from "next/image";
 
 const Stepper = (item: IStepper) => {
-  console.log("===item", item.index);
+
   const currentStep = 2;
   return (
     <div className="flex md:items-center gap-0.93 z-20">

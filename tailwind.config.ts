@@ -49,6 +49,9 @@ const config: Config = {
       margin: {
         '0.93': '0.9375rem'
       },
+      padding: {
+        '0.93': '0.9375rem'
+      },
       gap: {
         '0.93': '0.9375rem'
       },

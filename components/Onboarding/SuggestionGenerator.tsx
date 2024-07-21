@@ -8,9 +8,9 @@ import IconGenerate from "@/public/assets/icons/generate.svg";
 interface ISuggestionProps {
   currentCheckedBox?: number;
 }
-export default function SuggestionGenerator({
-  currentCheckedBox = 0,
-}: ISuggestionProps) {
+const SuggestionGenerator: React.FC<ISuggestionProps> = ({
+  currentCheckedBox = 0
+}) => {
   const {
     isDisabledButton,
     handleGenerateBrandVoiceSuggestions,
@@ -48,7 +48,10 @@ export default function SuggestionGenerator({
                   />
                 </>
               ) : (
-                <span className="text-body-medium-regular text-gray-scale-60 cursor-pointer" onClick={handleGenerateBrandVoiceSuggestions}>
+                <span
+                  className="text-body-medium-regular text-gray-scale-60 cursor-pointer"
+                  onClick={handleGenerateBrandVoiceSuggestions}
+                >
                   Alternatively, we can{" "}
                   <span className="text-primary underline text-body-medium-regular font-bold">
                     Generate
@@ -73,4 +76,6 @@ export default function SuggestionGenerator({
       )}
     </>
   );
-}
+};
+
+export default SuggestionGenerator;

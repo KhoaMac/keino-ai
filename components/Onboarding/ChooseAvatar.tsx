@@ -4,7 +4,7 @@ import useOnboardingHooks from "./useOnboardingHooks";
 import Image from "next/image";
 import IconGenerate from "@/public/assets/icons/generate.svg";
 import IconPlusCircle from "@/public/assets/icons/plus-circle.svg";
-
+import IconCheckCircle from "@/public/assets/icons/check-circle.svg";
 export default function ChooseAvatar() {
   const {
     selectedAvatar,
@@ -12,13 +12,14 @@ export default function ChooseAvatar() {
     handleUploadImageFromLocal,
     listDefaultAvatar,
     selectedAvatarFileName,
+    selectDefaultAvatarIndex,
   } = useOnboardingHooks();
   return (
     <>
       {/* Choose Avatar */}
       <OnboardingSection title="Choose avatar">
-        <div className="mt-1 flex w-full gap-5">
-          <div className="flex max-w-60 w-full flex-wrap gap-0.93">
+        <div className="mt-1 flex flex-col md:flex-row w-full gap-5">
+          <div className="flex max-w-60 w-full flex-wrap gap-0.93 mx-auto">
             {listDefaultAvatar.map((avatar: string, index: number) => (
               <label
                 key={index}
@@ -31,7 +32,7 @@ export default function ChooseAvatar() {
                   name="avatar"
                   value={avatar}
                   onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    handleOnSelectAvatar(event)
+                    handleOnSelectAvatar(event, index)
                   }
                   className="hidden"
                 />
@@ -41,10 +42,19 @@ export default function ChooseAvatar() {
                   layout="fill"
                   className="rounded-lg"
                 />
+                {selectDefaultAvatarIndex === index && (
+                  <div className="relative w-[1.2rem] h-[1.2rem] flex mr-[0.275rem] mt-[0.275rem] ml-auto">
+                    <Image
+                      src={IconCheckCircle}
+                      alt="icon-check-circle"
+                      layout="fill"
+                    />
+                  </div>
+                )}
               </label>
             ))}
           </div>
-          <div className="bg-primary-disabled-50 w-full justify-center items-center flex flex-col border-1 rounded-lg border-dashed border-primary">
+          <div className="bg-primary-disabled-50 w-full justify-center items-center flex flex-col border-1 rounded-lg border-dashed border-primary p-5">
             <div
               className={`${
                 selectedAvatar
@@ -75,6 +85,7 @@ export default function ChooseAvatar() {
                         src={IconGenerate}
                         alt="plus-circle"
                         className="mx-auto"
+                        layout="cover"
                       />
                       <p className="text-primary text-body-small-semibold">
                         Change File
@@ -101,6 +112,7 @@ export default function ChooseAvatar() {
                       src={IconPlusCircle}
                       alt="plus-circle"
                       className="mx-auto"
+                      layout="cover"
                     />
                     <p className="text-primary">Upload custom avatar</p>
                     <p className="text-gray-scale-40 text-caption-regular">

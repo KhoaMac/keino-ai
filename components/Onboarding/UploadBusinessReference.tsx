@@ -9,7 +9,7 @@ import Image from "next/image";
 
 export default function UploadBusinessReference() {
   const { files, handleDrop } = useOnboardingHooks();
-  console.log('==files', files)
+
   return (
     <div>
       <div

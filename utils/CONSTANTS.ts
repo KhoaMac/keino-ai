@@ -1,4 +1,7 @@
-import { ICheckBox, ITips } from "@/interface";
+import { IBrandVoices, ICheckBox, ITips } from "@/interface";
+import Avatar06 from "@/public/assets/icons/default-avatar/avatar-6.svg";
+import Avatar07 from "@/public/assets/icons/default-avatar/avatar-7.svg";
+import Avatar05 from "@/public/assets/icons/default-avatar/avatar-5.svg";
 
 const tips: ITips = {
   title: "Pro Tip",
@@ -42,9 +45,40 @@ const BUTTON_TYPES = {
   NONE: 'none',
 }
 
+const TABLE_HEADERS_BRAND_VOICES = [
+  { name: "Brand Voice" },
+  { name: "Avatar" },
+  { name: "Description" },
+  { name: "Detail" },
+  { name: "Default?" }
+];
+
+const TABLE_DATA_BRAND_VOICES: IBrandVoices[] = [
+  {
+    name: "Funny Cola",
+    avatar: Avatar05,
+    description: "Optimistic, hopeful, joyful",
+    isDefault: true,
+  },
+  {
+    name: "Professional",
+    avatar: Avatar07,
+    description: "Expert, competent, skilled",
+    isDefault: false,
+  },
+  {
+    name: "Humorous",
+    avatar: Avatar06,
+    description: "Witty, amusing, comical",
+    isDefault: false,
+  },
+];
+
 export {
   tips,
   checkboxes,
   BUTTON_TYPES,
-  listDescriptions
+  listDescriptions,
+  TABLE_HEADERS_BRAND_VOICES,
+  TABLE_DATA_BRAND_VOICES,
 }

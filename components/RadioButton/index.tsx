@@ -1,24 +1,31 @@
+import { twMerge } from "tailwind-merge";
+
 interface IRadioButtonProps {
-  selectedIndex: number,
-  index: number,
-  name: string,
-  label?: string
-  handleChange: (n: number) => void
+  selectedIndex: number;
+  index: number;
+  name: string;
+  label?: string;
+  handleChange: (n: number) => void;
+  className?: string;
 }
-export default function RadioButton({
+const RadioButton: React.FC<IRadioButtonProps> = ({
   selectedIndex,
   index,
   name,
   label,
-  handleChange
-}: IRadioButtonProps) {
+  handleChange,
+  className,
+}) => {
   return (
     <label
       key={index}
       htmlFor={`${name}-${index}`}
-      className={`group-check-boxes-container relative cursor-pointer md:max-w-[11.25rem] w-full flex items-center gap-2.5 bg-gray-scale-15 border-0.5 ${
-        selectedIndex === index ? "border-primary" : "border-gray-scale-20"
-      } rounded-lg p-2.5 min-h-[7.8125rem] h-auto`}
+      className={twMerge(
+        `group-check-boxes-container relative cursor-pointer md:max-w-[11.25rem] w-full flex items-center gap-2.5 bg-gray-scale-15 border-0.5 ${
+          selectedIndex === index ? "border-primary" : "border-gray-scale-20"
+        } rounded-lg p-2.5 min-h-[7.8125rem] h-auto`,
+        className
+      )}
     >
       <input
         type="radio"
@@ -34,4 +41,6 @@ export default function RadioButton({
       </span>
     </label>
   );
-}
+};
+
+export default RadioButton;

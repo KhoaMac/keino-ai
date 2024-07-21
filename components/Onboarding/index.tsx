@@ -11,6 +11,7 @@ import ChooseAvatar from "./ChooseAvatar";
 import BrandVoiceName from "./BrandVoiceName";
 import SuggestionGenerator from "./SuggestionGenerator";
 import UploadBusinessReference from "./UploadBusinessReference";
+import ChooseBrandVoices from "./ChooseBrandVoices";
 
 const Onboarding = () => {
   const { isDisabledButton, handleOnSave, currentCheckedBox, handleSelectTab } =
@@ -79,6 +80,12 @@ const Onboarding = () => {
             <SuggestionGenerator currentCheckedBox={currentCheckedBox} />
           </OnboardingSection>
         </>
+      )}
+
+      {currentCheckedBox === 2 && (
+        <OnboardingSection title="Choose brand voices">
+          <ChooseBrandVoices />
+        </OnboardingSection>
       )}
 
       {(currentCheckedBox === 0 || currentCheckedBox === 1) && (
