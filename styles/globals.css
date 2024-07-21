@@ -32,7 +32,7 @@ html {
     @apply text-body-medium-regular;
   }
 
-  input:focus {
+  input:focus, textarea:focus {
     @apply outline-none;
   }
 }

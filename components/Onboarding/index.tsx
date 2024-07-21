@@ -5,7 +5,6 @@ import GroupCheckbox from "./GroupCheckbox";
 import IconPlusActive from "@/public/assets/icons/plus-active.svg";
 import Button from "../Button";
 import { BUTTON_TYPES, checkboxes, tips } from "@/utils/CONSTANTS";
-import { useState } from "react";
 import IconDelete from "@/public/assets/icons/delete.svg";
 import useOnboardingHooks from "./useOnboardingHooks";
 import ChooseAvatar from "./ChooseAvatar";
@@ -14,12 +13,8 @@ import SuggestionGenerator from "./SuggestionGenerator";
 import UploadBusinessReference from "./UploadBusinessReference";
 
 const Onboarding = () => {
-  const {
-    isDisabledButton,
-    handleOnSave,
-    currentCheckedBox,
-    handleSelectTab,
-  } = useOnboardingHooks();
+  const { isDisabledButton, handleOnSave, currentCheckedBox, handleSelectTab } =
+    useOnboardingHooks();
   return (
     <div className="flex flex-col px-5 md:pl-[3.125rem] md:pr-[3.75rem] py-10 bg-white rounded-0.93">
       <div className="flex flex-col mb-2.5">
@@ -65,10 +60,32 @@ const Onboarding = () => {
           <OnboardingSection>
             <div className="custom-divider" />
           </OnboardingSection>
+        </>
+      )}
 
+      {currentCheckedBox === 1 && (
+        <>
+          {/* Generate sample output */}
+          <OnboardingSection title="Description of Brand Voice" infoToolTip>
+            <div className="bg-gray-scale-15 border-y-1 border-1 w-full rounded-lg mt-1.5">
+              <textarea
+                rows={4}
+                placeholder="Enter your brand voice's description"
+                className="bg-gray-scale-15 py-[0.84375rem] text-body-medium-regular w-full rounded-lg px-2 text-gray-scale-80"
+              />
+            </div>
+          </OnboardingSection>
+          <OnboardingSection title="Generate sample output">
+            <SuggestionGenerator currentCheckedBox={currentCheckedBox} />
+          </OnboardingSection>
+        </>
+      )}
+
+      {(currentCheckedBox === 0 || currentCheckedBox === 1) && (
+        <>
           {/* Brand Voice name */}
           <BrandVoiceName />
-          
+
           {/* Choose Avatar */}
           <ChooseAvatar />
         </>
@@ -95,14 +112,8 @@ const Onboarding = () => {
 };
 
 const CompanyInputWebsites = () => {
-  const [numberOfInputFields, setNumberOfInputFields] = useState<number>(1);
-  const handleAddUrl = () => {
-    setNumberOfInputFields(numberOfInputFields + 1);
-  };
-
-  const handleOnDeleteUrl = () => {
-    setNumberOfInputFields(numberOfInputFields - 1);
-  };
+  const { numberOfInputFields, handleAddUrl, handleOnDeleteUrl } =
+    useOnboardingHooks();
   return (
     <>
       <div className="mt-1 gap-5 flex flex-col">
@@ -172,6 +183,4 @@ const OnboardingSection = ({
 };
 
 export default Onboarding;
-export {
-  OnboardingSection
-}
+export { OnboardingSection };

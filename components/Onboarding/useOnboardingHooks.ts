@@ -13,6 +13,8 @@ const useOnboardingHooks = () => {
   const [selectedAvatarFileName, setSelectedAvatarFileName] = useState<string>('')
   const [currentCheckedBox, setCurrentCheckedBox] = useState<number>(0);
   const [suggestionText, setSuggestionText] = useState<string>("");
+  const [files, setFiles] = useState<File[]>([]);
+  const [numberOfInputFields, setNumberOfInputFields] = useState<number>(1);
 
   const handleOnSave = () => {
     console.log("save");
@@ -54,11 +56,17 @@ const useOnboardingHooks = () => {
     const randomIndex = Math.floor(Math.random() * listDescriptions.length);
     setSuggestionText(listDescriptions[randomIndex]);
   };
-
-  const [files, setFiles] = useState<File[]>([]);
-
+  
   const handleDrop = (acceptedFiles: File[]) => {
     setFiles(acceptedFiles);
+  };
+
+  const handleAddUrl = () => {
+    setNumberOfInputFields(numberOfInputFields + 1);
+  };
+
+  const handleOnDeleteUrl = () => {
+    setNumberOfInputFields(numberOfInputFields - 1);
   };
   
   return {
@@ -75,7 +83,10 @@ const useOnboardingHooks = () => {
     handleGenerateBrandVoiceSuggestions,
     suggestionText,
     files,
-    handleDrop
+    handleDrop,
+    numberOfInputFields,
+    handleAddUrl,
+    handleOnDeleteUrl,
   }
 }
 

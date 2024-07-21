@@ -5,7 +5,12 @@ import Button from "../Button";
 import { BUTTON_TYPES } from "@/utils/CONSTANTS";
 import IconGenerate from "@/public/assets/icons/generate.svg";
 
-export default function SuggestionGenerator() {
+interface ISuggestionProps {
+  currentCheckedBox?: number;
+}
+export default function SuggestionGenerator({
+  currentCheckedBox = 0,
+}: ISuggestionProps) {
   const {
     isDisabledButton,
     handleGenerateBrandVoiceSuggestions,
@@ -28,17 +33,29 @@ export default function SuggestionGenerator() {
               />
             </div>
             <div className="flex flex-col text-center w-full">
-              <span className="text-body-medium-regular text-gray-scale-60">
-                Fill out all the fields, and we'll craft the perfect brand voice
-                for you!
-              </span>
-              <Button
-                text="Generate Now"
-                type={BUTTON_TYPES.NONE}
-                disabled={isDisabledButton}
-                onClick={handleGenerateBrandVoiceSuggestions}
-                className="justify-center py-3 text-body-medium-semibold text-primary underline"
-              />
+              {currentCheckedBox === 0 ? (
+                <>
+                  <span className="text-body-medium-regular text-gray-scale-60">
+                    Fill out all the fields, and we'll craft the perfect brand
+                    voice for you!
+                  </span>
+                  <Button
+                    text="Generate Now"
+                    type={BUTTON_TYPES.NONE}
+                    disabled={isDisabledButton}
+                    onClick={handleGenerateBrandVoiceSuggestions}
+                    className="justify-center py-3 text-body-medium-semibold text-primary underline"
+                  />
+                </>
+              ) : (
+                <span className="text-body-medium-regular text-gray-scale-60 cursor-pointer" onClick={handleGenerateBrandVoiceSuggestions}>
+                  Alternatively, we can{" "}
+                  <span className="text-primary underline text-body-medium-regular font-bold">
+                    Generate
+                  </span>{" "}
+                  a brand voice for you.
+                </span>
+              )}
             </div>
           </>
         )}
