@@ -54,7 +54,6 @@ const onboardingSlice = createSlice({
     },
     deleteInputUrl: (state, action: PayloadAction<number>) => {
       state.inputUrls = state.inputUrls.filter((_, index) => index !== action.payload);
-      console.log('==action', action.payload);
     },
     setSubmitForm: (state, action) => {
       state.submitForm = action.payload;

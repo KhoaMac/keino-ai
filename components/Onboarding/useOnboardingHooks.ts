@@ -160,7 +160,6 @@ const useOnboardingHooks = () => {
         break
     }
   }, [onboardingSelectedStep, isDisabledButton])
-  console.log('==inputUrls', inputUrls)
   
   return {
     isDisabledButton,
