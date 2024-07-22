@@ -18,5 +18,4 @@ export interface IBrandVoices {
   name: string,
   avatar: string,
   description: string,
-  isDefault: boolean
 }

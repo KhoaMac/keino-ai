@@ -1,6 +1,8 @@
 import { ICheckBox } from "@/interface";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import RadioButton from "../RadioButton";
+import { useDispatch } from "react-redux";
+import { setOnboardingCheckedStep } from "@/redux/slice/onboardingSlice";
 
 interface IGroupCheckbox {
   name: string;
@@ -20,10 +22,13 @@ const GroupCheckbox = ({
    * It also calls the `currentSelection` function with the new index.
    * @param {number} index - The index of the checkbox to select.
    */
-  const handleChange = (index: number) => {
+
+  const dispatch = useDispatch();
+  const handleChange = useCallback((index: number) => {
     setSelectedIndex(index);
+    dispatch(setOnboardingCheckedStep(index));
     currentSelection(index);
-  };
+  }, [dispatch]);
 
   return (
     <div className="flex flex-col gap-4 md:gap-0 md:flex-row items-center w-full justify-between">

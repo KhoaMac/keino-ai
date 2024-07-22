@@ -12,9 +12,10 @@ import BrandVoiceName from "./BrandVoiceName";
 import SuggestionGenerator from "./SuggestionGenerator";
 import UploadBusinessReference from "./UploadBusinessReference";
 import ChooseBrandVoices from "./ChooseBrandVoices";
+import { ChangeEvent } from "react";
 
 const Onboarding = () => {
-  const { isDisabledButton, handleOnSave, currentCheckedBox, handleSelectTab } =
+  const { isDisabledButton, handleOnSave, currentCheckedBox, handleSelectTab, handleDescriptionOfBrandVoice } =
     useOnboardingHooks();
   return (
     <div className="flex flex-col px-5 md:pl-[3.125rem] md:pr-[3.75rem] py-10 bg-white rounded-0.93">
@@ -73,6 +74,7 @@ const Onboarding = () => {
                 rows={4}
                 placeholder="Enter your brand voice's description"
                 className="bg-gray-scale-15 py-[0.84375rem] text-body-medium-regular w-full rounded-lg px-2 text-gray-scale-80"
+                onBlur={(event: ChangeEvent<HTMLTextAreaElement>) => handleDescriptionOfBrandVoice(event)}
               />
             </div>
           </OnboardingSection>
@@ -102,7 +104,7 @@ const Onboarding = () => {
       <div className="flex flex-col gap-3.5 mt-[2.1875rem]">
         <Button
           text="Save & Next"
-          type={isDisabledButton ? BUTTON_TYPES.DEFAULT : BUTTON_TYPES.DISABLED}
+          type={isDisabledButton ? BUTTON_TYPES.DISABLED : BUTTON_TYPES.DEFAULT}
           disabled={isDisabledButton}
           onClick={handleOnSave}
           className="justify-center py-3 text-body-large-semibold text-white"
@@ -132,7 +134,7 @@ const Onboarding = () => {
 };
 
 const CompanyInputWebsites = () => {
-  const { numberOfInputFields, handleAddUrl, handleOnDeleteUrl } =
+  const { numberOfInputFields, handleAddUrl, handleOnDeleteUrl, handleCustomWebsiteUrls } =
     useOnboardingHooks();
   return (
     <>
@@ -148,6 +150,7 @@ const CompanyInputWebsites = () => {
                   type="text"
                   placeholder="input URL"
                   className="bg-gray-scale-15 py-[0.84375rem] text-body-medium-regular w-full rounded-r-lg px-2 text-gray-scale-80"
+                  onBlur={(event: ChangeEvent<HTMLInputElement>) => handleCustomWebsiteUrls(event)}
                 />
               </div>
             </div>
@@ -156,7 +159,7 @@ const CompanyInputWebsites = () => {
               <Button
                 type={BUTTON_TYPES.NONE}
                 icon={IconDelete}
-                onClick={handleOnDeleteUrl}
+                onClick={() => handleOnDeleteUrl(index)}
                 className="px-0 py-1"
               />
             )}

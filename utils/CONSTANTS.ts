@@ -58,19 +58,16 @@ const TABLE_DATA_BRAND_VOICES: IBrandVoices[] = [
     name: "Funny Cola",
     avatar: Avatar05,
     description: "Optimistic, hopeful, joyful",
-    isDefault: true,
   },
   {
     name: "Professional",
     avatar: Avatar07,
     description: "Expert, competent, skilled",
-    isDefault: false,
   },
   {
     name: "Humorous",
     avatar: Avatar06,
     description: "Witty, amusing, comical",
-    isDefault: false,
   },
 ];
 
